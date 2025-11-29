@@ -1,0 +1,36 @@
+{
+  "apiVersion": 2,
+  "name": "jovenemprendedor/galeria-tabs",
+  "title": "Galería con Tabs JEF",
+  "category": "jef-theme",
+  "icon": "images-alt2",
+  "description": "Galería organizada por años con tabs",
+  "attributes": {
+    "titulo": {
+      "type": "string",
+      "source": "html",
+      "selector": "h2",
+      "default": "Galería de Ediciones"
+    },
+    "descripcion": {
+      "type": "string",
+      "source": "html",
+      "selector": ".section-description",
+      "default": "Momentos memorables de cada año"
+    },
+    "years": {
+      "type": "array",
+      "default": [
+        {
+          "year": "2024",
+          "imagenes": [
+            {
+              "url": "",
+              "caption": "Conferencia Magistral"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

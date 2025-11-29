@@ -1,0 +1,34 @@
+{
+  "apiVersion": 2,
+  "name": "jovenemprendedor/timeline",
+  "title": "Timeline JEF",
+  "category": "jef-theme",
+  "icon": "calendar-alt",
+  "description": "Línea del tiempo de ediciones",
+  "attributes": {
+    "titulo": {
+      "type": "string",
+      "source": "html",
+      "selector": "h2",
+      "default": "Ediciones Anteriores"
+    },
+    "descripcion": {
+      "type": "string",
+      "source": "html",
+      "selector": ".section-description",
+      "default": "Un recorrido por la historia del Joven Emprendedor Forestal"
+    },
+    "items": {
+      "type": "array",
+      "default": [
+        {
+          "year": "2024 - X Edición",
+          "titulo": "Innovación y Tecnología Forestal",
+          "ubicacion": "Guadalajara, Jalisco",
+          "participantes": "800 participantes",
+          "descripcion": "Enfoque en drones, inteligencia artificial y herramientas digitales."
+        }
+      ]
+    }
+  }
+}

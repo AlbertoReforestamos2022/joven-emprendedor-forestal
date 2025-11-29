@@ -1,0 +1,33 @@
+{
+  "apiVersion": 2,
+  "name": "jovenemprendedor/documentos-gradiente",
+  "title": "Documentos con Gradiente JEF",
+  "category": "jef-theme",
+  "icon": "media-document",
+  "description": "Cards de documentos con gradiente",
+  "attributes": {
+    "titulo": {
+      "type": "string",
+      "source": "html",
+      "selector": "h2",
+      "default": "Documentos de Interés"
+    },
+    "descripcion": {
+      "type": "string",
+      "source": "html",
+      "selector": ".section-description",
+      "default": "Accede a memorias, presentaciones y material relevante"
+    },
+    "documentos": {
+      "type": "array",
+      "default": [
+        {
+          "icon": "fa-file-pdf",
+          "titulo": "Memorias 2024",
+          "descripcion": "Compilación de ponencias y resultados",
+          "url": "#"
+        }
+      ]
+    }
+  }
+}

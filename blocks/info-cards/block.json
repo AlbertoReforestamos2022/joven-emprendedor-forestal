@@ -1,0 +1,42 @@
+{
+  "apiVersion": 2,
+  "name": "jovenemprendedor/info-cards",
+  "title": "Info Cards JEF",
+  "category": "jef-theme",
+  "icon": "grid-view",
+  "description": "Cards de información con íconos",
+  "attributes": {
+    "titulo": {
+      "type": "string",
+      "source": "html",
+      "selector": "h2",
+      "default": "¿Qué es Joven Emprendedor Forestal?"
+    },
+    "descripcion": {
+      "type": "string",
+      "source": "html",
+      "selector": ".section-description",
+      "default": "Descubre los beneficios de formar parte del Congreso Forestal más grande de México"
+    },
+    "cards": {
+      "type": "array",
+      "default": [
+        { 
+          "icon": "fa-graduation-cap", 
+          "titulo": "Aprendizaje", 
+          "descripcion": "Talleres, conferencias y capacitaciones con expertos del sector forestal" 
+        },
+        { 
+          "icon": "fa-users", 
+          "titulo": "Networking", 
+          "descripcion": "Conecta con jóvenes de todo el país apasionados por los bosques" 
+        },
+        { 
+          "icon": "fa-lightbulb", 
+          "titulo": "Innovación", 
+          "descripcion": "Conoce las últimas tendencias en tecnología y gestión forestal sostenible" 
+        }
+      ]
+    }
+  }
+}

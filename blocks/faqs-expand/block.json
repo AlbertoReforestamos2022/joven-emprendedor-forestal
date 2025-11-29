@@ -1,0 +1,44 @@
+{
+  "apiVersion": 2,
+  "name": "jovenemprendedor/faq-expandible",
+  "title": "FAQ Expandible JEF",
+  "category": "jef-theme",
+  "icon": "editor-help",
+  "description": "Preguntas frecuentes con opción de expandir",
+  "attributes": {
+    "titulo": {
+      "type": "string",
+      "source": "html",
+      "selector": "h2",
+      "default": "Preguntas Frecuentes"
+    },
+    "descripcion": {
+      "type": "string",
+      "source": "html",
+      "selector": ".section-description",
+      "default": "Resolvemos tus dudas sobre el congreso"
+    },
+    "preguntasVisibles": {
+      "type": "array",
+      "default": [
+        {
+          "pregunta": "¿Cuándo y dónde será la próxima edición?",
+          "respuesta": "La próxima edición será en marzo de 2025."
+        }
+      ]
+    },
+    "preguntasOcultas": {
+      "type": "array",
+      "default": [
+        {
+          "pregunta": "¿Puedo presentar un trabajo de investigación?",
+          "respuesta": "Sí, tenemos una convocatoria para presentación de trabajos."
+        }
+      ]
+    },
+    "textoBoton": {
+      "type": "string",
+      "default": "Ver más preguntas"
+    }
+  }
+}

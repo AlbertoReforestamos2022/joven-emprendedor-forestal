@@ -1,0 +1,41 @@
+{
+  "apiVersion": 2,
+  "name": "jovenemprendedor/sobre-proyecto",
+  "title": "Sobre el Proyecto JEF",
+  "category": "jef-theme",
+  "icon": "align-pull-left",
+  "description": "Sección sobre el proyecto con imagen y lista",
+  "attributes": {
+    "titulo": {
+      "type": "string",
+      "source": "html",
+      "selector": "h2"
+    },
+    "contenido": {
+      "type": "string",
+      "source": "html",
+      "selector": ".project-content"
+    },
+    "objetivosTitulo": {
+      "type": "string",
+      "default": "Nuestros Objetivos:"
+    },
+    "objetivos": {
+      "type": "array",
+      "default": [
+        "Promover la educación ambiental y forestal entre jóvenes",
+        "Fomentar el intercambio de conocimientos y experiencias",
+        "Crear redes de colaboración entre instituciones educativas",
+        "Impulsar proyectos de investigación y desarrollo sostenible"
+      ]
+    },
+    "imagen": {
+      "type": "string",
+      "default": ""
+    },
+    "imagenAlt": {
+      "type": "string",
+      "default": "Proyecto"
+    }
+  }
+}

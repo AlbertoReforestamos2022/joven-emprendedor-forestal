@@ -1,0 +1,46 @@
+{
+  "apiVersion": 2,
+  "name": "jovenemprendedor/hero-stats",
+  "title": "Hero con Estadísticas JEF",
+  "category": "jef-theme",
+  "icon": "cover-image",
+  "description": "Hero principal con estadísticas",
+  "attributes": {
+    "titulo": {
+      "type": "string",
+      "default": "Joven Emprendedor Forestal"
+    },
+    "subtitulo": {
+      "type": "string",
+      "default": "Unidos por los bosques, construyendo un futuro sostenible para México"
+    },
+    "showButtons": {
+      "type": "boolean",
+      "default": true
+    },
+    "buttonPrimaryText": {
+      "type": "string",
+      "default": "Únete Ahora"
+    },
+    "buttonPrimaryUrl": {
+      "type": "string",
+      "default": "#"
+    },
+    "buttonSecondaryText": {
+      "type": "string",
+      "default": "Conoce Más"
+    },
+    "buttonSecondaryUrl": {
+      "type": "string",
+      "default": "#info"
+    },
+    "stats": {
+      "type": "array",
+      "default": [
+        { "number": "10+", "label": "Ediciones" },
+        { "number": "5000+", "label": "Participantes" },
+        { "number": "100%", "label": "Compromiso" }
+      ]
+    }
+  }
+}
