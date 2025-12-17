@@ -1,0 +1,17 @@
+{
+    "version": 3,
+    "settings": {
+        "color": {
+            "palette": [
+                {"slug": "primary", "color": "#307eb1", "name": "Azul"},
+                {"slug": "secondary", "color": "#8fbf26", "name": "Verde"},
+                {"slug": "tertiary", "color": "#0092be", "name": "Background Blue"}
+            ]
+        },
+        "typography": {
+            "fontFamilies": [
+                {"slug": "Work Sans", "fontFamily": "Wonk Sans, sans-serif"}
+            ]
+        }
+    }
+}

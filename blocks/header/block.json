@@ -10,6 +10,14 @@
       "type": "string",
       "default": "Joven Emprendedor Forestal"
     },
+    "BackgroundColorNav": {
+      "type": "string",
+      "default": "#307eb1"
+    },
+    "colorItems": {
+      "type": "string",
+      "default": "#ffffff"
+    },
     "showIcon": {
       "type": "boolean",
       "default": true

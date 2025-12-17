@@ -2,6 +2,8 @@ import { useBlockProps } from '@wordpress/block-editor';
 
 export default function save({ attributes }) {
     const { 
+        BackgroundColorNav,
+        colorItems,        
         siteName, 
         logoType, 
         icon, 
@@ -17,7 +19,7 @@ export default function save({ attributes }) {
     const blockProps = useBlockProps.save();
 
     return (
-        <nav {...blockProps} className="navbar navbar-expand-lg navbar-dark fixed-top jef-navbar">
+        <nav {...blockProps} className="navbar navbar-expand-lg navbar-dark fixed-top jef-navbar" style={ {BackgroundColor: BackgroundColorNav, color: colorItems }}>
             <div className="container">
                 <a className="navbar-brand" href="#">
                     {logoType === 'icon' && <i className={`fas ${icon} me-2`}></i>}
@@ -55,7 +57,7 @@ export default function save({ attributes }) {
                     <ul className="navbar-nav ms-auto">
                         {menuItems.map((item, index) => (
                             <li key={index} className="nav-item">
-                                <a className="nav-link" href={item.url}>
+                                <a className="nav-link" href={item.url} style={{ color: colorItems }}>
                                     {item.label}
                                 </a>
                             </li>

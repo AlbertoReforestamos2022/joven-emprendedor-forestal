@@ -1,6 +1,5 @@
 .jef-navbar {
     transition: all 0.3s;
-    background: linear-gradient(135deg, #2e7fb1, #1e5a7f);
 
     &.scrolled {
         box-shadow: 0 2px 20px rgba(0,0,0,0.1);
@@ -21,7 +20,6 @@
     }
 
     .nav-link {
-        color: rgba(255,255,255,0.9) !important;
         font-weight: 500;
         transition: all 0.3s;
         margin: 0 0.5rem;

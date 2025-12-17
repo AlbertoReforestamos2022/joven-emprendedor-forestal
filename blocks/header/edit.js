@@ -1,9 +1,11 @@
 import { __ } from '@wordpress/i18n';
-import { useBlockProps, InspectorControls, MediaUpload } from '@wordpress/block-editor';
+import { useBlockProps, InspectorControls, MediaUpload, PanelColorSettings } from '@wordpress/block-editor';
 import { PanelBody, TextControl, Button, SelectControl, RangeControl } from '@wordpress/components';
 
 export default function Edit({ attributes, setAttributes }) {
     const { 
+        BackgroundColorNav,
+        colorItems,
         siteName, 
         logoType, 
         icon, 
@@ -48,6 +50,23 @@ export default function Edit({ attributes, setAttributes }) {
         <>
             <InspectorControls>
                 <PanelBody title={__('Configuración del Navbar', 'jovenemprendedor')} initialOpen={true}>
+                    {/** Colores  */}
+                    <PanelColorSettings 
+                        title={__('Colores', 'jovenemprendedor')}
+                        colorSettings={[
+                            {
+                                value: BackgroundColorNav,
+                                onChange: (color) => setAttributes({ BackgroundColorNav: color }),
+                                label: __('Fondo del menú', 'jovenemprendedor')
+                            }, 
+                            {
+                                value: colorItems, 
+                                onChange: (color)=> setAttributes({ colorItems: color}),
+                                label: __('Color de los items', 'jovenemprendedor')
+                            }
+                        ]}
+                    />
+
                     <TextControl
                         label={__('Nombre del sitio', 'jovenemprendedor')}
                         value={siteName}
@@ -96,7 +115,7 @@ export default function Edit({ attributes, setAttributes }) {
                                                     style={{ 
                                                         width: logoWidth + 'px', 
                                                         marginBottom: '8px',
-                                                        background: '#2e7fb1',
+                                                        background: '#edededff',
                                                         padding: '8px',
                                                         borderRadius: '4px'
                                                     }} 
@@ -161,7 +180,7 @@ export default function Edit({ attributes, setAttributes }) {
                                             style={{ 
                                                 width: logoDosWidth + 'px', 
                                                 marginBottom: '8px',
-                                                background: '#2e7fb1',
+                                                background: '#edededff',
                                                 padding: '8px',
                                                 borderRadius: '4px'
                                             }} 
@@ -257,7 +276,7 @@ export default function Edit({ attributes, setAttributes }) {
                 </PanelBody>
             </InspectorControls>
 
-            <nav {...blockProps} className="navbar navbar-expand-lg navbar-dark jef-navbar">
+            <nav {...blockProps} className="navbar navbar-expand-lg navbar-dark jef-navbar" style={ {BackgroundColor: BackgroundColorNav, color: colorItems }}>
                 <div className="container">
                     <a className="navbar-brand" href="#">
                         {logoType === 'icon' && <i className={`fas ${icon} me-2`}></i>}
@@ -289,7 +308,7 @@ export default function Edit({ attributes, setAttributes }) {
                         <ul className="navbar-nav ms-auto">
                             {menuItems.map((item, index) => (
                                 <li key={index} className="nav-item">
-                                    <a className="nav-link" href={item.url}>
+                                    <a className="nav-link" href={item.url} style={{ color: colorItems }}>
                                         {item.label}
                                     </a>
                                 </li>
