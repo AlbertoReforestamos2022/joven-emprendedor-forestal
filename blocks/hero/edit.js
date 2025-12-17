@@ -1,13 +1,60 @@
 import { __ } from '@wordpress/i18n';
-import { useBlockProps, InspectorControls, RichText } from '@wordpress/block-editor';
-import { PanelBody, TextControl, ToggleControl, Button } from '@wordpress/components';
+import { useBlockProps, RichText, InspectorControls, MediaUpload, PanelColorSettings } from '@wordpress/block-editor';
+import { PanelBody, TextControl, ToggleControl, Button, RangeControl } from '@wordpress/components';
 
 export default function Edit({ attributes, setAttributes }) {
-    const { titulo, subtitulo, showButtons, buttonPrimaryText, buttonPrimaryUrl, buttonSecondaryText, buttonSecondaryUrl, stats } = attributes;
+    const { 
+        titulo, 
+        subtitulo, 
+        showButtons, 
+        buttonPrimaryText, 
+        buttonPrimaryUrl, 
+        buttonSecondaryText, 
+        buttonSecondaryUrl, 
+        stats,
+        backgroundColor,
+        backgroundImage,
+        overlayColor,
+        overlayOpacity
+    } = attributes;
+
+    // Construir el estilo del hero
+    const heroStyle = {};
+    
+    // Si hay imagen de fondo
+    if (backgroundImage) {
+        heroStyle.backgroundImage = `url(${backgroundImage})`;
+        heroStyle.backgroundSize = 'cover';
+        heroStyle.backgroundPosition = 'center';
+        heroStyle.position = 'relative';
+    } 
+    // Si no hay imagen, usar color o gradient por defecto
+    else if (backgroundColor) {
+        heroStyle.background = backgroundColor;
+    } else {
+        heroStyle.background = 'linear-gradient(135deg, #2e7fb1 0%, #1e5a7f 100%)';
+    }
 
     const blockProps = useBlockProps({
-        className: 'hero-section'
+        className: 'hero-section',
+        style: heroStyle
     });
+
+    // Convertir opacidad (0-100) a rgba
+    const getOverlayStyle = () => {
+        if (!backgroundImage) return {};
+        
+        const opacity = overlayOpacity / 100;
+        return {
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: overlayColor || `rgba(46, 127, 177, ${opacity})`,
+            zIndex: 1
+        };
+    };
 
     const updateStat = (index, field, value) => {
         const newStats = [...stats];
@@ -28,6 +75,80 @@ export default function Edit({ attributes, setAttributes }) {
     return (
         <>
             <InspectorControls>
+                <PanelBody title={__('Fondo', 'jovenemprendedor')} initialOpen={true}>
+                    <MediaUpload
+                        onSelect={(media) => setAttributes({ backgroundImage: media.url })}
+                        allowedTypes={['image']}
+                        value={backgroundImage}
+                        render={({ open }) => (
+                            <div className="mb-3">
+                                <p><strong>{__('Imagen de fondo', 'jovenemprendedor')}</strong></p>
+                                {backgroundImage ? (
+                                    <div>
+                                        <img 
+                                            src={backgroundImage} 
+                                            alt="Background" 
+                                            style={{ width: '100%', marginBottom: '8px', borderRadius: '4px' }} 
+                                        />
+                                        <div className="d-flex gap-2">
+                                            <Button onClick={open} variant="secondary">
+                                                Cambiar imagen
+                                            </Button>
+                                            <Button 
+                                                onClick={() => setAttributes({ backgroundImage: '' })}
+                                                isDestructive
+                                            >
+                                                Quitar imagen
+                                            </Button>
+                                        </div>
+                                    </div>
+                                ) : (
+                                    <Button onClick={open} variant="primary">
+                                        Seleccionar imagen de fondo
+                                    </Button>
+                                )}
+                            </div>
+                        )}
+                    />
+
+                    {!backgroundImage && (
+                        <div className="mt-3">
+                            <p className="text-muted small">
+                                {__('Si no seleccionas imagen, puedes elegir un color de fondo:', 'jovenemprendedor')}
+                            </p>
+                        </div>
+                    )}
+                </PanelBody>
+
+                <PanelColorSettings
+                    title={__('Colores', 'jovenemprendedor')}
+                    colorSettings={[
+                        {
+                            value: backgroundColor,
+                            onChange: (color) => setAttributes({ backgroundColor: color }),
+                            label: __('Color de fondo (sin imagen)', 'jovenemprendedor')
+                        },
+                        {
+                            value: overlayColor,
+                            onChange: (color) => setAttributes({ overlayColor: color }),
+                            label: __('Color del overlay (con imagen)', 'jovenemprendedor')
+                        }
+                    ]}
+                />
+
+                {backgroundImage && (
+                    <PanelBody title={__('Overlay de imagen', 'jovenemprendedor')}>
+                        <RangeControl
+                            label={__('Opacidad del overlay', 'jovenemprendedor')}
+                            value={overlayOpacity}
+                            onChange={(value) => setAttributes({ overlayOpacity: value })}
+                            min={0}
+                            max={100}
+                            help={__('Ajusta la oscuridad del overlay para mejorar la legibilidad del texto', 'jovenemprendedor')}
+                        />
+                    </PanelBody>
+                )}
+
                 <PanelBody title={__('Botones', 'jovenemprendedor')}>
                     <ToggleControl
                         label={__('Mostrar botones', 'jovenemprendedor')}
@@ -61,7 +182,7 @@ export default function Edit({ attributes, setAttributes }) {
                     )}
                 </PanelBody>
 
-                <PanelBody title={__('Estadísticas', 'jovenemprendedor')} initialOpen={true}>
+                <PanelBody title={__('Estadísticas', 'jovenemprendedor')} initialOpen={false}>
                     <Button 
                         variant="primary" 
                         onClick={addStat}
@@ -102,7 +223,10 @@ export default function Edit({ attributes, setAttributes }) {
             </InspectorControls>
 
             <section {...blockProps}>
-                <div className="container hero-content">
+                {/* Overlay si hay imagen de fondo */}
+                {backgroundImage && <div style={getOverlayStyle()}></div>}
+                
+                <div className="container hero-content" style={{ position: 'relative', zIndex: 2 }}>
                     <div className="row align-items-center">
                         <div className="col-lg-7">
                             <RichText

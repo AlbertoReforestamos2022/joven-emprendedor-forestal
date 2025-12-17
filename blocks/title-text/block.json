@@ -1,0 +1,28 @@
+{
+  "apiVersion": 2,
+  "name": "jovenemprendedor/title-text",
+  "title": "Titulo con texto",
+  "category": "jef-theme",
+  "icon": "text",
+  "description": "Sección Sobre Nosotros",
+  "attributes": {
+    "titulo": {
+      "type": "string",
+      "source": "html",
+      "selector": "h2"
+    },
+    "descripcion": {
+      "type": "string",
+      "source": "html",
+      "selector": "p"
+    }, 
+    "backgroundColor": {
+      "type": "string",
+      "default": ""
+    }, 
+    "textColor": {
+      "type": "string",
+      "default": ""
+    }
+  }
+}

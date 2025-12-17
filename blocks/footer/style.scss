@@ -1,0 +1,35 @@
+.jef-footer {
+    background: linear-gradient(135deg, #1e5a7f, #2e7fb1);
+    color: white;
+    padding: 3rem 0 1rem;
+
+    a {
+        color: rgba(255,255,255,0.8);
+        text-decoration: none;
+        transition: all 0.3s;
+
+        &:hover {
+            color: #8cc029;
+        }
+    }
+
+    h5 {
+        color: white;
+
+        .footer-logo {
+            max-height: 200px;
+            width: auto;
+            object-fit: contain;
+        }
+    }
+
+    ul {
+        li {
+            margin-bottom: 0.5rem;
+        }
+    }
+
+    .fs-4 {
+        font-size: 1.5rem;
+    }
+}

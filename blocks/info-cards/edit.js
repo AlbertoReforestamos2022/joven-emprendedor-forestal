@@ -16,7 +16,12 @@ export default function Edit({ attributes, setAttributes }) {
     };
 
     const addCard = () => {
-        const newCards = [...cards, { icon: 'fa-star', titulo: '', descripcion: '' }];
+        const newCards = [...cards, { 
+            icon: 'fa-star', 
+            titulo: '', 
+            descripcion: '' 
+        }];
+
         setAttributes({ cards: newCards });
     };
 

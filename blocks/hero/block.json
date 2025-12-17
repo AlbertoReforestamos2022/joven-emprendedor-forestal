@@ -41,6 +41,22 @@
         { "number": "5000+", "label": "Participantes" },
         { "number": "100%", "label": "Compromiso" }
       ]
+    },
+    "backgroundColor": {
+      "type": "string",
+      "default": ""
+    },
+    "backgroundImage": {
+      "type": "string",
+      "default": ""
+    },
+    "overlayColor": {
+      "type": "string",
+      "default": "rgba(46, 127, 177, 0.65)"
+    },
+    "overlayOpacity": {
+      "type": "number",
+      "default": 85
     }
   }
 }

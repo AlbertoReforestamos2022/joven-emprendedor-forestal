@@ -1,0 +1,68 @@
+{
+  "apiVersion": 2,
+  "name": "jovenemprendedor/footer",
+  "title": "Footer JEF",
+  "category": "jef-theme",
+  "icon": "editor-insertmore",
+  "description": "Footer con información y enlaces",
+  "attributes": {
+    "showIcon": {
+      "type": "boolean",
+      "default": true
+    },
+    "icon": {
+      "type": "string",
+      "default": "fa-tree"
+    },
+    "logoImage": {
+      "type": "string",
+      "default": ""
+    },
+    "logoAlt": {
+      "type": "string",
+      "default": "Logo"
+    },
+    "logoWidth": {
+      "type": "number",
+      "default": 40
+    },
+    "titulo": {
+      "type": "string",
+      "default": "Congreso Forestal"
+    },
+    "descripcion": {
+      "type": "string",
+      "default": "Formando a la próxima generación de líderes forestales de México."
+    },
+    "tituloEnlaces": {
+      "type": "string",
+      "default": "Enlaces Rápidos"
+    },
+    "enlaces": {
+      "type": "array",
+      "default": [
+        { "label": "Información", "url": "#info" },
+        { "label": "Sobre Nosotros", "url": "#proyecto" },
+        { "label": "Documentos", "url": "#documentos" },
+        { "label": "Preguntas Frecuentes", "url": "#faq" }
+      ]
+    },
+    "tituloRedes": {
+      "type": "string",
+      "default": "Síguenos"
+    },
+    "redes": {
+      "type": "array",
+      "default": [
+        { "icon": "fa-facebook", "url": "#" },
+        { "icon": "fa-instagram", "url": "#" },
+        { "icon": "fa-twitter", "url": "#" },
+        { "icon": "fa-youtube", "url": "#" }
+      ]
+    },
+    "copyright": {
+      "type": "string",
+      "default": "&copy; 2024 Congreso Forestal Juvenil. Todos los derechos reservados."
+    }
+  }
+}

@@ -1,9 +1,9 @@
 import { __ } from '@wordpress/i18n';
 import { useBlockProps, RichText, MediaUpload, InspectorControls } from '@wordpress/block-editor';
-import { PanelBody, Button, TextControl } from '@wordpress/components';
+import { PanelBody, Button, TextControl, SelectControl } from '@wordpress/components';
 
 export default function Edit({ attributes, setAttributes }) {
-    const { titulo, contenido, objetivosTitulo, objetivos, imagen, imagenAlt } = attributes;
+    const { titulo, contenido, objetivosTitulo, objetivos, imagen, imagenAlt, imagenPosicion } = attributes;
 
     const blockProps = useBlockProps({
         className: 'py-5 bg-light-custom'
@@ -25,10 +25,24 @@ export default function Edit({ attributes, setAttributes }) {
         setAttributes({ objetivos: newObjetivos });
     };
 
+    // Determinar las clases de orden según la posición
+    const textoClasses = imagenPosicion === 'left' ? 'col-lg-6 mb-4 mb-lg-0 order-lg-2' : 'col-lg-6 mb-4 mb-lg-0';
+    const imagenClasses = imagenPosicion === 'left' ? 'col-lg-6 order-lg-1' : 'col-lg-6';
+
     return (
         <>
             <InspectorControls>
-                <PanelBody title={__('Imagen', 'jovenemprendedor')}>
+                <PanelBody title={__('Configuración de Imagen', 'jovenemprendedor')}>
+                    <SelectControl
+                        label={__('Posición de la imagen', 'jovenemprendedor')}
+                        value={imagenPosicion}
+                        options={[
+                            { label: 'Derecha', value: 'right' },
+                            { label: 'Izquierda', value: 'left' }
+                        ]}
+                        onChange={(value) => setAttributes({ imagenPosicion: value })}
+                    />
+
                     <MediaUpload
                         onSelect={(media) => {
                             setAttributes({ 
@@ -101,7 +115,7 @@ export default function Edit({ attributes, setAttributes }) {
             <section {...blockProps}>
                 <div className="container">
                     <div className="row align-items-center">
-                        <div className="col-lg-6 mb-4 mb-lg-0">
+                        <div className={textoClasses}>
                             <RichText
                                 tagName="h2"
                                 className="section-title"
@@ -127,7 +141,7 @@ export default function Edit({ attributes, setAttributes }) {
                                 </ul>
                             </div>
                         </div>
-                        <div className="col-lg-6">
+                        <div className={imagenClasses}>
                             {imagen ? (
                                 <img src={imagen} alt={imagenAlt} className="img-fluid rounded shadow-lg" />
                             ) : (

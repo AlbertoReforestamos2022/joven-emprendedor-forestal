@@ -1,0 +1,58 @@
+{
+  "apiVersion": 2,
+  "name": "jovenemprendedor/navbar",
+  "title": "Navbar JEF",
+  "category": "jef-theme",
+  "icon": "menu",
+  "description": "Barra de navegación con menú responsive",
+  "attributes": {
+    "siteName": {
+      "type": "string",
+      "default": "Joven Emprendedor Forestal"
+    },
+    "showIcon": {
+      "type": "boolean",
+      "default": true
+    },
+    "icon": {
+      "type": "string",
+      "default": "fa-tree"
+    },
+    "logoImage": {
+      "type": "string",
+      "default": ""
+    },
+    "logoAlt": {
+      "type": "string",
+      "default": "Logo"
+    },
+    "logoWidth": {
+      "type": "number",
+      "default": 40
+    },
+    "logoDosImage": {
+      "type": "string",
+      "default": ""
+    },
+    "logoDosAlt": {
+      "type": "string",
+      "default": "Logo"
+    },
+    "logoDosWidth": {
+      "type": "number",
+      "default": 40
+    },    
+    "menuItems": {
+      "type": "array",
+      "default": [
+        { "label": "Inicio", "url": "#inicio" },
+        { "label": "Información", "url": "#info" },
+        { "label": "Proyecto", "url": "#proyecto" },
+        { "label": "Ediciones", "url": "#timeline" },
+        { "label": "Documentos", "url": "#documentos" },
+        { "label": "Galería", "url": "#galeria" },
+        { "label": "FAQ", "url": "#faq" }
+      ]
+    }
+  }
+}

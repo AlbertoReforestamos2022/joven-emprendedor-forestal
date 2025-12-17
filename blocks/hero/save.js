@@ -1,16 +1,63 @@
 import { useBlockProps, RichText } from '@wordpress/block-editor';
 
 export default function save({ attributes }) {
-    const { titulo, subtitulo, showButtons, buttonPrimaryText, buttonPrimaryUrl, buttonSecondaryText, buttonSecondaryUrl, stats } = attributes;
+    const { 
+        titulo, 
+        subtitulo, 
+        showButtons, 
+        buttonPrimaryText, 
+        buttonPrimaryUrl, 
+        buttonSecondaryText, 
+        buttonSecondaryUrl, 
+        stats,
+        backgroundColor,
+        backgroundImage,
+        overlayColor,
+        overlayOpacity
+    } = attributes;
+
+    // Construir el estilo del hero
+    const heroStyle = {};
+    
+    if (backgroundImage) {
+        heroStyle.backgroundImage = `url(${backgroundImage})`;
+        heroStyle.backgroundSize = 'cover';
+        heroStyle.backgroundPosition = 'center';
+        heroStyle.position = 'relative';
+    } else if (backgroundColor) {
+        heroStyle.background = backgroundColor;
+    } else {
+        heroStyle.background = 'linear-gradient(135deg, #2e7fb1 0%, #1e5a7f 100%)';
+    }
 
     const blockProps = useBlockProps.save({
         className: 'hero-section',
-        id: 'inicio'
+        id: 'inicio',
+        style: heroStyle
     });
+
+    // Estilo del overlay
+    const getOverlayStyle = () => {
+        if (!backgroundImage) return {};
+        
+        const opacity = overlayOpacity / 100;
+        return {
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: overlayColor || `rgba(46, 127, 177, ${opacity})`,
+            zIndex: 1
+        };
+    };
 
     return (
         <section {...blockProps}>
-            <div className="container hero-content">
+            {/* Overlay si hay imagen de fondo */}
+            {backgroundImage && <div style={getOverlayStyle()}></div>}
+            
+            <div className="container hero-content" style={{ position: 'relative', zIndex: 2 }}>
                 <div className="row align-items-center">
                     <div className="col-lg-7">
                         <RichText.Content

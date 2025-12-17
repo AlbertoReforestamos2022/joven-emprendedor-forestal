@@ -26,11 +26,87 @@
           "imagenes": [
             {
               "url": "",
-              "caption": "Conferencia Magistral"
+              "caption": ""
             }
           ]
         }
       ]
+    },
+    "usarVerMas": {
+      "type": "boolean",
+      "default": false
+    },
+    "imagenesIniciales": {
+      "type": "number",
+      "default": 6
+    },
+    "imagenesPorCarga": {
+      "type": "number",
+      "default": 6
+    },
+    "textoVerMas": {
+      "type": "string",
+      "default": "Ver más fotos"
+    },
+    "textoVerMenos": {
+      "type": "string",
+      "default": "Ver menos"
+    },
+    "verMasButtonBg": {
+      "type": "string",
+      "default": "#2e7fb1"
+    },
+    "verMasButtonText": {
+      "type": "string",
+      "default": "#ffffff"
+    },
+    "backgroundColor": {
+      "type": "string",
+      "default": ""
+    },
+    "tituloColor": {
+      "type": "string",
+      "default": ""
+    },
+    "descripcionColor": {
+      "type": "string",
+      "default": ""
+    },
+    "tabActiveColor": {
+      "type": "string",
+      "default": "#2e7fb1"
+    },
+    "tabInactiveColor": {
+      "type": "string",
+      "default": "#6c757d"
+    },
+    "overlayColor": {
+      "type": "string",
+      "default": "rgba(46, 127, 177, 0.9)"
+    },
+    "captionTextColor": {
+      "type": "string",
+      "default": "#ffffff"
+    },
+    "tituloFontSize": {
+      "type": "number",
+      "default": 40
+    },
+    "descripcionFontSize": {
+      "type": "number",
+      "default": 18
+    },
+    "textAlign": {
+      "type": "string",
+      "default": "center"
+    },
+    "imagenAltura": {
+      "type": "number",
+      "default": 300
+    },
+    "columnasDesktop": {
+      "type": "number",
+      "default": 3
     }
   }
 }
